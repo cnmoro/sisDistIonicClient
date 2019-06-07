@@ -1,14 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Transfer App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let transfer of transferList" on-click="reservarTransferGetData(transfer.id)">
+    <ion-card-header style="padding: 0px 16px 0px 16px;">
+      <ion-row>
+        <ion-col>
+          <p style="float: left; font-size: medium"><strong>{{transfer.tipoVeiculo}}</strong></p>
+        </ion-col>
+        <ion-col>
+          <p style="float: right">
+            #{{transfer.id}}
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <strong>Passageiros:</strong> {{transfer.numPassageiros}}
+      </p>
+      <p>
+        <strong>Preço:</strong> R$ {{transfer.preco}}
+      </p>
+      <p>
+        <strong>Reservado:</strong> {{transfer.reservado}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

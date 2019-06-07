@@ -1,5 +1,7 @@
 {
   "name": "sdapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
